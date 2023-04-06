@@ -7,14 +7,8 @@ class Config(object):
     DEVELOPMENT = False
     SECRET_KEY = "6c35237bb89c22463451387a0aec5d78"
     CELERY = {        
-        "broker_url": "redis://{}:{}".format(
-            os.getenv("REDIS_HOST"),
-            os.getenv("REDIS_PORT"),
-        ),
-        "result_backend": "redis://{}:{}".format(
-            os.getenv("REDIS_HOST"),
-            os.getenv("REDIS_PORT"),
-        ),
+        "broker_url": os.getenv("REDIS_URL"),
+        "result_backend": os.getenv("REDIS_URL"),
         "broker_transport_options": {
             'visibility_timeout': 120,
             'queue_name_prefix': 'celery-',
